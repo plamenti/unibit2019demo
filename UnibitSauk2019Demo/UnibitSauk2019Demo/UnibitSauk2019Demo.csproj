@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="PageObjects\Header.cs" />
     <Compile Include="PageObjects\MainPage.cs" />
+    <Compile Include="PageObjects\SignInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestLogin.cs" />
   </ItemGroup>
