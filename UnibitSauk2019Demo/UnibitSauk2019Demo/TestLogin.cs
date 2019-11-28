@@ -13,8 +13,6 @@ namespace UnibitSauk2019Demo
         private MainPage mainPage;
         private SignInPage signInPage;
         private IWebDriver driver;
-        public IDictionary<string, object> vars { get; private set; }
-        private IJavaScriptExecutor js;
 
         [TestInitialize]
         public void SetUp()
@@ -23,8 +21,6 @@ namespace UnibitSauk2019Demo
             header = new Header(driver);
             mainPage = new MainPage(driver);
             signInPage = new SignInPage(driver);
-            js = (IJavaScriptExecutor)driver;
-            vars = new Dictionary<string, object>();
         }
 
         [TestCleanup]
@@ -36,16 +32,18 @@ namespace UnibitSauk2019Demo
         [TestMethod]
         public void SuccessfulLogin()
         {
+            // Arrane
+            // Given
             mainPage.GoToIndex();
             header.SignInButton.Click();
-
-            signInPage.EmailAddress.Click();
-            signInPage.EmailAddress.SendKeys("d2041118@urhen.com");
-            signInPage.Password.Click();
-            signInPage.Password.SendKeys("123456");
-            signInPage.SignInButton.Click();
-
-            Assert.AreEqual(driver.FindElement(By.CssSelector(".account > span")).Text, "Unibit Test");
+            
+            // Act
+            // When
+            signInPage.Login("d2041118@urhen.com", "123456");
+            
+            // Assert
+            // Then
+            Assert.AreEqual(header.UserInfo.Text, "Unibit Test");
         }
 
         [TestMethod]

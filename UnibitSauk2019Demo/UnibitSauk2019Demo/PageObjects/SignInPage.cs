@@ -20,7 +20,6 @@ namespace UnibitSauk2019Demo.PageObjects
         {
             get
             {
-                //emailAddress = driver.FindElement(By.Id("email"));
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
                 emailAddress = wait.Until(d => d.FindElement(By.Id("email")));
 
@@ -32,7 +31,6 @@ namespace UnibitSauk2019Demo.PageObjects
         {
             get
             {
-                //password = driver.FindElement(By.Id("passwd"));
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
                 password = wait.Until(d => d.FindElement(By.Id("passwd")));
 
@@ -49,6 +47,19 @@ namespace UnibitSauk2019Demo.PageObjects
                 
                 return signInButton;
             }
+        }
+
+        public void Login(string emailAddress, string password)
+        {
+            EmailAddress.Click();
+            EmailAddress.Clear();
+            EmailAddress.SendKeys(emailAddress);
+
+            Password.Click();
+            Password.Clear();
+            Password.SendKeys(password);
+
+            SignInButton.Click();
         }
     }
 }

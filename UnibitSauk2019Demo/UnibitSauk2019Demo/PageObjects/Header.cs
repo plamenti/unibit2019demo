@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace UnibitSauk2019Demo.PageObjects
 {
@@ -6,6 +8,7 @@ namespace UnibitSauk2019Demo.PageObjects
     {
         private IWebDriver driver;
         private IWebElement signInButton;
+        private IWebElement userInfo;
 
         public Header(IWebDriver driver)
         {
@@ -18,6 +21,17 @@ namespace UnibitSauk2019Demo.PageObjects
             {
                 signInButton = driver.FindElement(By.LinkText("Sign in"));
                 return signInButton;
+            }
+        }
+
+        public IWebElement UserInfo
+        {
+            get
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+                userInfo = wait.Until(d => d.FindElement(By.CssSelector(".account > span")));
+
+                return userInfo;
             }
         }
     }
