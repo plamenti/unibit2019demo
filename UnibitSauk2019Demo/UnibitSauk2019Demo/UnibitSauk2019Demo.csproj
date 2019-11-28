@@ -54,10 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="PageObjects\ContactUsPage.cs" />
     <Compile Include="PageObjects\Header.cs" />
     <Compile Include="PageObjects\MainPage.cs" />
     <Compile Include="PageObjects\SignInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestContactUs.cs" />
     <Compile Include="TestLogin.cs" />
   </ItemGroup>
   <ItemGroup>

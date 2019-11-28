@@ -10,7 +10,6 @@ namespace UnibitSauk2019Demo.PageObjects
         public MainPage(IWebDriver driver)
         {
             this.driver = driver;
-            driver.Manage().Window.Maximize();
         }
 
         public void GoToIndex()
