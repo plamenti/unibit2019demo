@@ -2,12 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using UnibitSauk2019Demo.PageObjects;
 
 namespace UnibitSauk2019Demo
 {
     [TestClass]
     public class TestLogin
     {
+        private Header header;
         private IWebDriver driver;
         public IDictionary<string, object> vars { get; private set; }
         private IJavaScriptExecutor js;
@@ -16,6 +18,7 @@ namespace UnibitSauk2019Demo
         public void SetUp()
         {
             driver = new ChromeDriver();
+            header = new Header(driver);
             js = (IJavaScriptExecutor)driver;
             vars = new Dictionary<string, object>();
         }
