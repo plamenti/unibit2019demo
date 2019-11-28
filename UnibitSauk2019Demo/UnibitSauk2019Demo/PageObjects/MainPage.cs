@@ -2,7 +2,7 @@
 
 namespace UnibitSauk2019Demo.PageObjects
 {
-    class MainPage
+    public class MainPage
     {
         private const string Url = "http://automationpractice.com/index.php";
         private IWebDriver driver;

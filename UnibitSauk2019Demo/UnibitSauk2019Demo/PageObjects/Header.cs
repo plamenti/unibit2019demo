@@ -4,7 +4,7 @@ using System;
 
 namespace UnibitSauk2019Demo.PageObjects
 {
-    class Header
+    public class Header
     {
         private IWebDriver driver;
         private IWebElement signInButton;

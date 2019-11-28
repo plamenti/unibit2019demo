@@ -4,7 +4,7 @@ using System;
 
 namespace UnibitSauk2019Demo.PageObjects
 {
-    class SignInPage
+    public class SignInPage
     {
         private IWebElement emailAddress;
         private IWebElement password;
