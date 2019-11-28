@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using UnibitSauk2019Demo.PageObjects;
@@ -35,8 +34,8 @@ namespace UnibitSauk2019Demo
             // Arrane
             // Given
             mainPage.GoToIndex();
-            header.SignInButton.Click();
-            
+            header.GoToSignIn();
+
             // Act
             // When
             signInPage.Login("d2041118@urhen.com", "123456");
@@ -50,24 +49,22 @@ namespace UnibitSauk2019Demo
         public void EmptyFields()
         {
             mainPage.GoToIndex();
-            header.SignInButton.Click();
+            header.GoToSignIn();
 
-            driver.FindElement(By.CssSelector("#SubmitLogin > span")).Click();
-            Assert.AreEqual(driver.FindElement(By.CssSelector("ol > li")).Text, "An email address required.");
+            signInPage.Login("", "");
+
+            Assert.AreEqual(signInPage.GetErrorMessageText(), "An email address required.");
         }
 
         [TestMethod]
         public void NonExistingMail()
         {
             mainPage.GoToIndex();
-            header.SignInButton.Click();
+            header.GoToSignIn();
 
-            driver.FindElement(By.Id("email")).Click();
-            driver.FindElement(By.Id("email")).SendKeys("non_existing_mail@test.com");
-            driver.FindElement(By.Id("passwd")).Click();
-            driver.FindElement(By.Id("passwd")).SendKeys("123456");
-            driver.FindElement(By.CssSelector("#SubmitLogin > span")).Click();
-            Assert.AreEqual(driver.FindElement(By.CssSelector("ol > li")).Text, "Authentication failed.");
+            signInPage.Login("non_existing_mail@test.com", "123456");
+
+            Assert.AreEqual(signInPage.GetErrorMessageText(), "Authentication failed.");
         }
     }
 }

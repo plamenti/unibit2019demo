@@ -34,5 +34,10 @@ namespace UnibitSauk2019Demo.PageObjects
                 return userInfo;
             }
         }
+
+        public void GoToSignIn()
+        {
+            SignInButton.Click();
+        }
     }
 }

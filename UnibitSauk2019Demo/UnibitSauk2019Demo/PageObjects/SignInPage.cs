@@ -9,6 +9,7 @@ namespace UnibitSauk2019Demo.PageObjects
         private IWebElement emailAddress;
         private IWebElement password;
         private IWebElement signInButton;
+        private IWebElement errorMessage;
         private IWebDriver driver;
 
         public SignInPage(IWebDriver driver)
@@ -16,7 +17,7 @@ namespace UnibitSauk2019Demo.PageObjects
             this.driver = driver;
         }
 
-        public IWebElement EmailAddress
+        private IWebElement EmailAddress
         {
             get
             {
@@ -27,7 +28,7 @@ namespace UnibitSauk2019Demo.PageObjects
             }
         }
 
-        public IWebElement Password
+        private IWebElement Password
         {
             get
             {
@@ -38,7 +39,7 @@ namespace UnibitSauk2019Demo.PageObjects
             }
         }
 
-        public IWebElement SignInButton
+        private IWebElement SignInButton
         {
             get
             {
@@ -46,6 +47,22 @@ namespace UnibitSauk2019Demo.PageObjects
                 signInButton = wait.Until(d => d.FindElement(By.Id("SubmitLogin")));
                 
                 return signInButton;
+            }
+        }
+
+        public string GetErrorMessageText()
+        {
+            return ErrorMessage.Text;
+        }
+
+        public IWebElement ErrorMessage
+        {
+            get
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+                errorMessage = wait.Until(d => d.FindElement(By.CssSelector("ol > li")));
+
+                return errorMessage;
             }
         }
 
